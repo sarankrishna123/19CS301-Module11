@@ -1,5 +1,5 @@
 # 19CS301-Module11
-### EX: 11.1 Singly Linked List (Traversal, Search and Delete)
+### EX: 11 a Singly Linked List (Traversal, Search and Delete)
 
 ### Aim: Write a function to traverse the linked list and display it in the following format.
 
