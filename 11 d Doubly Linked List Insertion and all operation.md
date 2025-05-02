@@ -20,54 +20,77 @@ STEP 6: Stop.
 reg no:212223070023
 name:saran krishna P S
 class Node:
-         def     __init__(self, data):
-                self.item = data
-                self.nref = None
-                 self.pref = None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
 
 class DoublyLinkedList:
-                def      init (self):
-                     self.start_node = None
+    def __init__(self):
+        self.head = None
+    
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+        new_node.prev = last
+    
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head = new_node
+    
+    def display_forward(self):
+        current = self.head
+        if not current:
+            print("List is empty")
+            return
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.next
+        print("None")
+    
+    def display_backward(self):
+        current = self.head
+        if not current:
+            print("List is empty")
+            return
+        while current.next:
+            current = current.next
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.prev
+        print("None")
 
-                def insert_in_emptylist(self, data):
-                    if self.start_node is None:
-                             new_node = Node(data)
-                             self.start_node = new_node
-                    else:
- 
-                         print ("list is not empty")
+if __name__ == "__main__":
+    dll = DoublyLinkedList()
+    
+    for i in range(4):
+        val = int(input(f"Enter value {i+1}: "))
+        dll.append(val)
+    
+    print("Original list:")
+    dll.display_forward()
+    
+    new_val = int(input("Enter value to insert at the beginning: "))
+    dll.insert_at_beginning(new_val)
+    
+    print("List after inserting at the beginning:")
+    dll.display_forward()
 
-
-                def insert_at_start(self, data):
-                   if self.start_node is None:
-                          new_node = Node(data)
-                          self.start_node = new_node
-                          print ("node inserted")
-                          return
-                    new_node = Node(data)
-                    new_node.nref = self.start_node
-                    self.start_node.pref = new_node
-                   self.start_node = new_node
-
-              def traverse_list(self):
-                  if self.start_node is None:
-                            print ("List has no element")
-                            return
-                   else:
-                            n = self.start_node
-                   while n is not None:
-                              print (n.item , " ")
-                              n = n.nref
- new_linked_list = DoublyLinkedList()
- new_linked_list.insert_in_emptylist(40)
-new_linked_list.insert_at_start(30)
-new_linked_list.insert_at_start(20)
-new_linked_list.insert_at_start(10)
-new_linked_list.traverse_list()
 ```
 ### Output:
  
-![image](https://github.com/user-attachments/assets/c9883d28-638d-4f70-bc2d-f269a1606a45)
+![image](https://github.com/user-attachments/assets/ca5e14bd-e347-434a-a239-dd4a967ad6bf)
 
  
 
