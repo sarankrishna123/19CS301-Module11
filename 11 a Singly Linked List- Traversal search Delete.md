@@ -22,35 +22,51 @@ STEP 6 : Stop.
 reg no:212223070023
 name:saran krishna P S
 class Node:
-      def     init (self, data=None):
-            self.data = data
-            self.next = None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+    
+    def display(self):
+        current = self.head
+        if not current:
+            print("List is empty")
+            return
+        while current:
+            if current.next:
+                print(f"{current.data} ->", end=" ")
+            else:
+                print(f"{current.data} -> None", end="")
+            current = current.next
+        print()
 
-class SLinkedList:
-       def      init (self):
-             self.head = None
+if __name__ == "__main__":
+    linked_list = LinkedList()
+    
+    for i in range(4):
+        val = int(input(f"Enter value {i+1}: "))
+        linked_list.append(val)
+    
+    linked_list.display()
 
-       def listprint(self):
-             printval = self.head
-             while printval is not None:
-                    print(printval.data)
-                    printval = printval.next
-
- list = SLinkedList()
-list.head = Node("Mon")
-e2 = Node("Tue")
-e3 = Node("Wed")
-
-# Link first Node to second node list.head.next = e2
-
-# Link second Node to third node e2.next = e3
-
-list.listprint()
+       
 
 ```
 ### Output:
-![image](https://github.com/user-attachments/assets/f7547c51-0a61-45c2-93da-48fbb60de473)
+![image](https://github.com/user-attachments/assets/6981d2f7-cda7-47d2-b9e2-e1efbde7dc2c)
 
 
 ### Result: Thus, the given program is implemented and executed successfully .
